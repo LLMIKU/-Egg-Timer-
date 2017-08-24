@@ -8,7 +8,7 @@
 #include <stdlib.h>
 #include <time.h>
 
-static int GetCurTime(char* strTime)
+static int GetCurTime(char* strTime)//è·å–å½“å‰æ—¶é—´
 {
 	struct tm*		tmTime = NULL;
 	size_t			timeLen = 0;
@@ -22,7 +22,7 @@ static int GetCurTime(char* strTime)
 	return timeLen;
 }
 
-void CreateVbs(char *tmpStr,int minutes)
+void CreateVbs(char *tmpStr,int minutes)//åˆ›å»ºè¯­éŸ³æ–‡ä»¶
 {
 	char str1[200]="2.VBS";
 	char str2[200];
@@ -37,31 +37,31 @@ void CreateVbs(char *tmpStr,int minutes)
 	}
 	else printf("open the VBS file succeed!\n");
 	sprintf(str3,
-	"CreateObject(\"SAPI.SpVoice\").Speak\"ÏÖÔÚÊÇ±±¾©Ê±¼ä%s£¬\
-	ÄúÒÑ¾­¹¤×÷ÁË%dĞ¡Ê±%d·ÖÖÓ£¬Çë×¢ÒâĞİÏ¢£¬\
+	"CreateObject(\"SAPI.SpVoice\").Speak\"ç°åœ¨æ˜¯åŒ—äº¬æ—¶é—´%sï¼Œ\
+	æ‚¨å·²ç»å·¥ä½œäº†%då°æ—¶%dåˆ†é’Ÿï¼Œè¯·æ³¨æ„ä¼‘æ¯ï¼Œ\
 	you have already worked for %d minutes, please pay attention to your health\"",
 	tmpStr,minutes/60,minutes%60,minutes);
 	m=fputs(str3,fp);
 	if(m==0)
 	{
-		printf("ÓïÒôĞ´Èë³É¹¦£¡\n");
+		printf("è¯­éŸ³å†™å…¥æˆåŠŸï¼\n");
 	}
-	else printf("ÓïÒôĞ´ÈëÊ§°Ü£¡\n");
+	else printf("è¯­éŸ³å†™å…¥å¤±è´¥ï¼\n");
 	fclose(fp);
 	return;
 }
 
-void TimeBroadcast(int i)//´«Èë²ÎÊıÎªÃëÊı 
+void TimeBroadcast(int i)//ä¼ å…¥å‚æ•°ä¸ºç§’æ•° 
 {
 	int minutes=0;
 	minutes=i/60;
 	char tmpStr[64];
 	char str[128];
-	GetCurTime(tmpStr);//»ñÈ¡Ê±¼ä 
+	GetCurTime(tmpStr);//è·å–æ—¶é—´ 
 	sprintf(str, "%s", tmpStr);
-	CreateVbs(str,minutes);//Ğ´ÈëÁÙÊ±ÓïÒôÎÄ¼ş
-	ShellExecuteA(0, "open", "D:\\Documents\\2.VBS", 0, 0, 1);//Ö´ĞĞÓïÒô²¥±¨ 
-	Sleep(18000);//ÓïÒô²¥±¨Ô¤ÁôÊ±¼ä 
+	CreateVbs(str,minutes);//å†™å…¥ä¸´æ—¶è¯­éŸ³æ–‡ä»¶
+	ShellExecuteA(0, "open", "D:\\Documents\\2.VBS", 0, 0, 1);//æ‰§è¡Œè¯­éŸ³æ’­æŠ¥ 
+	Sleep(18000);//è¯­éŸ³æ’­æŠ¥é¢„ç•™æ—¶é—´ 
 	return; 	
 }
 
@@ -73,7 +73,7 @@ void main()
 	for(i=0;i<3600;i++)
 	{
 		//system("cls");
-		printf("ÏÖÔÚÊÇµÚ%d·ÖÖÓÓÖ%dÃë\n",i/60,i%60);
+		printf("ç°åœ¨æ˜¯ç¬¬%dåˆ†é’Ÿåˆ%dç§’\n",i/60,i%60);
 		Sleep(1000);
 		if(i==3000)
 		{
